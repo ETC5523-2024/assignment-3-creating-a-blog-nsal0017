@@ -1,13 +1,22 @@
 ---
-title: "About"
+title: "Namandeep kaur"
 image: profile.jpg
 about:
   template: jolla
   links:
     - icon: github
       text: Github
-      href: https://github.com/etc5523-2022
+      href: https://github.com/nsal0017
+    - icon: linkedin
+      text: linkedin
+      href: https://www.linkedin.com/in/namandeep-kaur-28b150321/
 
 ---
 
-This is a blog template for the ETC5523 Communicating with Data assessment at Monash University.
+I am a dedicated student at Monash University, currently pursuing a Master of Business Analytics, , building on a strong academic foundation with a Bachelor's in Commerce from DAVV, India. Along with my academic journey, I have experience working as a teacher, where I organized and managed a number of school events, which helped me develop strong leadership and project management skills. 
+
+I am proficient in tools like Python, SQL, and GitHub, enabling me to transform raw data into actionable insights. I am passionate about applying these skills in the business world and aim to work in data consulting or business intelligence. 
+
+
+
+
