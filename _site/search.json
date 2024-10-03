@@ -9,9 +9,9 @@
   {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog Template",
+    "title": "Exploring Haunted Places in the United States: A Data-Driven Analysis",
     "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!"
+    "text": "This is the first post in a Quarto blog. Welcome!\nlibrary(plotly)\n\n\nAttaching package: 'plotly'\n\n\nThe following object is masked from 'package:ggplot2':\n\n    last_plot\n\n\nThe following object is masked from 'package:stats':\n\n    filter\n\n\nThe following object is masked from 'package:graphics':\n\n    layout\n\nhaunted_places &lt;- read_csv(here::here(\"data/haunted_places.csv\"))\n\nNew names:\n• `` -&gt; `...1`\n\n\nRows: 10992 Columns: 11\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (6): city, country, description, location, state, state_abbrev\ndbl (5): ...1, longitude, latitude, city_longitude, city_latitude\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
   },
   {
     "objectID": "about.html#contacts",
@@ -19,5 +19,68 @@
     "title": "Namandeep kaur",
     "section": "Contacts",
     "text": "Contacts"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Exploring Haunted Places in the United States: A Data-Driven Analysis\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nOct 3, 2024\n\n\nNamandeep kaur Saluja\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#introduction",
+    "href": "index.html#introduction",
+    "title": "Exploring Haunted Places in the United States: A Data-Driven Analysis",
+    "section": "",
+    "text": "Have you ever look at certain states in America and think to yourself, why do these states have more ghosts legends? This blog post looks at the haunted places across the United States and uses data to provide answers to those interested in paranormal activities. When considering over 11 thousand haunted places, we will determine which states are the most scary, and which kind of places are scarier most often. Apart from the purpose of the guide for paranormal tourists, this research can also provides the understanding about cultural and historical values."
+  },
+  {
+    "objectID": "index.html#problem-discription",
+    "href": "index.html#problem-discription",
+    "title": "Exploring Haunted Places in the United States: A Data-Driven Analysis",
+    "section": "Problem Discription",
+    "text": "Problem Discription\nThe purpose of this study is to understand the trend of the haunted place across the United States with regard to the location, category, and relation with historical events. Identifying which states are the most active and which types of geographic regions take a majority of the activity can help to establish a connection to history."
+  },
+  {
+    "objectID": "index.html#data-description",
+    "href": "index.html#data-description",
+    "title": "Exploring Haunted Places in the United States: A Data-Driven Analysis",
+    "section": "Data Description",
+    "text": "Data Description\nThe data set, from TidyTuesday, has about 11,000 rows. Each row has details like where the spooky place is (city, state, and map points), a brief of the site, and type (e.g., inn, graveyard). The main bits for this study are:\n\n\nCity: The town where it is found.\nState: The U.S. state of the spooky spot.\nDescription: A short text box telling what the site is like.\nCoordinates: Long and lat points to put the places on a map."
+  },
+  {
+    "objectID": "index.html#analysis",
+    "href": "index.html#analysis",
+    "title": "Exploring Haunted Places in the United States: A Data-Driven Analysis",
+    "section": "Analysis",
+    "text": "Analysis\n\nlocation_counts &lt;- haunted_places %&gt;%\n  group_by(location, state) %&gt;%\n  summarise(count = n(), .groups = \"drop\") %&gt;%\n  arrange(desc(count)) %&gt;%\n  head(5)\n\nlocation_counts |&gt;\n  kable() |&gt;\n  kable_styling(bootstrap_options = c(\"striped\", \"hover\", \"condensed\"))\n\n\n\nTable 1: Top five haunted locations\n\n\n\n\n\n\n\nlocation\nstate\ncount\n\n\n\n\nPrince Georges county\nMaryland\n18\n\n\nMission Inn\nCalifornia\n12\n\n\nOviedo\nFlorida\n12\n\n\nFordham University\nNew York\n11\n\n\nUniversity of Vermont\nVermont\n11\n\n\n\n\n\n\n\n\n\n\n\nTable 1\n\nggplot(location_counts, aes(x = state, y = count, fill = location)) +\n  geom_bar(stat = \"identity\", position = \"dodge\") +\n  theme_minimal() +\n  scale_fill_brewer(palette = \"Blues\") +  \n  labs(title = \"Number of Haunted Places by State and Type\",\n       x = \"State\",\n       y = \"Number of Haunted Places\",\n       fill = \"Location Type\") +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))"
+  },
+  {
+    "objectID": "posts/welcome/index.html#introduction",
+    "href": "posts/welcome/index.html#introduction",
+    "title": "Exploring Haunted Places in the United States: A Data-Driven Analysis",
+    "section": "Introduction",
+    "text": "Introduction\nHave you ever look at certain states in America and think to yourself, why do these states have more ghosts legends? This blog post looks at the haunted places across the United States and uses data to provide answers to those interested in paranormal activities. When considering over 11 thousand haunted places, we will determine which states are the most scary, and which kind of places are scarier most often. Apart from the purpose of the guide for paranormal tourists, this research can also provides the understanding about cultural and historical values."
+  },
+  {
+    "objectID": "posts/welcome/index.html#problem-discription",
+    "href": "posts/welcome/index.html#problem-discription",
+    "title": "Exploring Haunted Places in the United States: A Data-Driven Analysis",
+    "section": "Problem Discription",
+    "text": "Problem Discription\nThe purpose of this study is to understand the trend of the haunted place across the United States with regard to the location, category, and relation with historical events. Identifying which states are the most active and which types of geographic regions take a majority of the activity can help to establish a connection to history."
+  },
+  {
+    "objectID": "posts/welcome/index.html#data-description",
+    "href": "posts/welcome/index.html#data-description",
+    "title": "Exploring Haunted Places in the United States: A Data-Driven Analysis",
+    "section": "Data Description",
+    "text": "Data Description\nThe data set, from TidyTuesday, has about 11,000 rows. Each row has details like where the spooky place is (city, state, and map points), a brief of the site, and type (e.g., inn, graveyard). The main bits for this study are:\n\n\nCity: The town where it is found.\nState: The U.S. state of the spooky spot.\nDescription: A short text box telling what the site is like.\nCoordinates: Long and lat points to put the places on a map."
+  },
+  {
+    "objectID": "posts/welcome/index.html#analysis",
+    "href": "posts/welcome/index.html#analysis",
+    "title": "Exploring Haunted Places in the United States: A Data-Driven Analysis",
+    "section": "Analysis",
+    "text": "Analysis\n\nlocation_counts &lt;- haunted_places %&gt;%\n  group_by(location, state) %&gt;%\n  summarise(count = n(), .groups = \"drop\") %&gt;%\n  arrange(desc(count)) %&gt;%\n  head(5)\n\nlocation_counts |&gt;\n  kable() |&gt;\n  kable_styling(bootstrap_options = c(\"striped\", \"hover\", \"condensed\"))\n\n\n\nTable 1: Top five haunted locations\n\n\n\n\n\n\n\nlocation\nstate\ncount\n\n\n\n\nPrince Georges county\nMaryland\n18\n\n\nMission Inn\nCalifornia\n12\n\n\nOviedo\nFlorida\n12\n\n\nFordham University\nNew York\n11\n\n\nUniversity of Vermont\nVermont\n11\n\n\n\n\n\n\n\n\n\n\n\nTable 1\n\nggplot(location_counts, aes(x = state, y = count, fill = location)) +\n  geom_bar(stat = \"identity\", position = \"dodge\") +\n  theme_minimal() +\n  scale_fill_brewer(palette = \"Blues\") +  \n  labs(title = \"Number of Haunted Places by State and Type\",\n       x = \"State\",\n       y = \"Number of Haunted Places\",\n       fill = \"Location Type\") +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))"
   }
 ]

@@ -1,12 +1,83 @@
 ---
-title: "Welcome To My Blog Template"
-author: "Emi Tanaka"
-date: "2022-07-18"
+title: "Exploring Haunted Places in the United States: A Data-Driven Analysis"
+author: "Namandeep kaur Saluja"
+date: "today"
 categories: [news]
 ---
 
 This is the first post in a Quarto blog. Welcome!
 
 ![](thumbnail.jpg)
+```{r}
+#| include: FALSE
 
+library(ggplot2)
+library(dplyr)
+library(knitr)
+library(tidyverse)
+library(kableExtra)
+library(maps)
+```
+
+
+```{r}
+library(plotly)
+
+haunted_places <- read_csv(here::here("data/haunted_places.csv"))
+
+```
+
+## Introduction
+
+Have you ever look at certain states in America and think to yourself, why do these states have more ghosts legends? This blog post looks at the haunted places across the United States and uses data to provide answers to those interested in paranormal activities. When considering over 11 thousand haunted places, we will determine which states are the most scary, and which kind of places are scarier most often. Apart from the purpose of the guide for paranormal tourists, this research can also provides the understanding about cultural and historical values.
+
+## Problem Discription
+
+The purpose of this study is to understand the trend of the haunted place across the United States with regard to the location, category, and relation with historical events. Identifying which states are the most active and which types of geographic regions take a majority of the activity can help to establish a connection to history.
+
+## Data Description
+
+The data set, from TidyTuesday, has about 11,000 rows. Each row has details like where the spooky place is (city, state, and map points), a brief of the site, and type (e.g., inn, graveyard). The main bits for this study are:
+
+-
+- City: The town where it is found.
+- State: The U.S. state of the spooky spot.
+- Description: A short text box telling what the site is like.
+- Coordinates: Long and lat points to put the places on a map.
+
+## Analysis
+
+```{r}
+#| label: tbl-one
+#| tbl-cap: Top five haunted locations
+
+location_counts <- haunted_places %>%
+  group_by(location, state) %>%
+  summarise(count = n(), .groups = "drop") %>%
+  arrange(desc(count)) %>%
+  head(5)
+
+location_counts |>
+  kable() |>
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
+
+```
+@tbl-one
+
+
+```{r}
+
+ggplot(location_counts, aes(x = state, y = count, fill = location)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Blues") +  
+  labs(title = "Number of Haunted Places by State and Type",
+       x = "State",
+       y = "Number of Haunted Places",
+       fill = "Location Type") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+```{r}
+
+```
 

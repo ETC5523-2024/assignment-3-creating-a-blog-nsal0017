@@ -1,7 +1,5 @@
 ---
-title: "Exploring Haunted Places in the United States: A Data-Driven Analysis"
-author: "Namandeep Kaur Saluja"
-date: today
+title: "Blog"
 listing:
   contents: posts
   sort: "date desc"
@@ -14,16 +12,9 @@ title-block-banner: true
 ---
 
 
-```{r}
-#| include: FALSE
 
-library(ggplot2)
-library(dplyr)
-library(maps)
-library(tidyverse)
 
-haunted_places <- read_csv(here::here("data/haunted_places.csv"))
 
-```
+
 
 
