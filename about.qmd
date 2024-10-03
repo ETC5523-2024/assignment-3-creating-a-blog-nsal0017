@@ -1,5 +1,5 @@
 ---
-title: "Namandeep kaur"
+title: "Namandeep kaur Sauja"
 image: profile.jpg
 about:
   template: jolla
