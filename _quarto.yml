@@ -7,7 +7,7 @@ website:
   navbar:
     left:
       - text: Blog
-        href: INDEX.qmd
+        href: index.qmd
     right:
       - about.qmd
       - icon: github
