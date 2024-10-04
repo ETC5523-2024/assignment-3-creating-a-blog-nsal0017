@@ -1,26 +1,99 @@
-/* css styles */
-.navbar-dark, .quarto-title-banner {
-  background-color: #006DAE;
+/* Flatly Theme Styles with Custom Colors */
+
+/* Navbar and Title Banner */
+.quarto-title-banner {
+    background-color: #006DAE; /* Primary blue */
 }
 
-.navbar-dark .navbar-brand, .navbar-dark .navbar-nav .nav-link, .quarto-title-banner h1 {
-  color: #ffffff;
+.navbar {
+    background-color: #003366; /* Primary blue for navbar */
 }
 
+.navbar .navbar-brand,
+.navbar .navbar-nav .nav-link,
+.quarto-title-banner h1 {
+    color: #ffffff; /* White text for navbar and title */
+}
+
+/* Body styles */
 body {
-  background-color: #f0f4f7;
-  color: #333333;
+    background-color: #f0f4f7; /* Light background color */
+    color: #333333; /* Dark text color */
+    font-family: "Arial", sans-serif; /* Clean font */
 }
 
+/* Headings */
 h1, h2, h3 {
-  color: #0055A5;
-  font-family: "Arial", sans-serif;
+    color: #0055A5; /* Custom dark blue for headings */
 }
 
+/* Links */
 a {
-  color: #006DAE;
-}
-a:hover {
-  color: #004080;
+    color: #006DAE; /* Primary link color */
 }
 
+a:hover {
+    color: #004080; /* Darker blue on hover */
+}
+
+/* Button styles */
+.btn {
+    background-color: #007bff; /* Flatly primary blue */
+    border: none; /* No border */
+    color: #ffffff; /* White text */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Card styles */
+.card {
+    background-color: #ffffff; /* White background for cards */
+    border: 1px solid #dee2e6; /* Light gray border */
+    border-radius: 0.25rem; /* Rounded corners */
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Light shadow */
+}
+
+/* Footer styles */
+footer {
+    background-color: #006DAE; /* Primary blue for footer */
+    color: #ffffff; /* White text */
+    padding: 1rem; /* Padding for footer */
+}
+
+/* Utility classes */
+.text-primary {
+    color: #006DAE; /* Primary text color */
+}
+
+.bg-primary {
+    background-color: #006DAE; /* Primary background color */
+}
+
+
+.columns {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.column {
+  padding: 10px;
+}
+
+.divider {
+  width: 1px;
+  background-color: #ccc; /* Light gray color for the divider */
+  height: 100%; /* Full height of the container */
+  margin: 0 20px; /* Adds space around the line */
+}
+
+img {
+  display: block;
+  margin-bottom: 15px; /* Space between the image and the links */
+}
+
+h2, h3 {
+  margin-top: 0;
+}

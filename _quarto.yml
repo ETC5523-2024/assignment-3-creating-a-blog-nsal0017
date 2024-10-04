@@ -4,13 +4,16 @@ project:
 website:
   title: "Let's Innovate and Create"
   navbar:
+    left:
+      - text: Blog
+        href: INDEX.qmd
     right:
       - about.qmd
       - icon: github
         href: https://github.com/nsal0017
 format:
   html:
-    theme: Flaty
+    theme: Flatly
     css: styles.css
 
 

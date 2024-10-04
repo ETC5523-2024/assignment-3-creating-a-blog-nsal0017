@@ -1,11 +1,11 @@
 ---
-title: "Exploring Haunted Places in the United States: A Data-Driven Analysis"
+title: "Ghosts in the Data: Mapping America’s Most Haunted Locations"
 author: "Namandeep kaur Saluja"
 date: "today"
-categories: [news]
+categories: [blog]
 ---
 
-This is the first post in a Quarto blog. Welcome!
+
 
 ![](thumbnail.jpg)
 ```{r}
@@ -24,29 +24,35 @@ haunted_places <- read_csv(here::here("data/haunted_places.csv"))
 
 ## Introduction
 
-Have you ever look at certain states in America and think to yourself, why do these states have more ghosts legends? This blog post looks at the haunted places across the United States and uses data to provide answers to those interested in paranormal activities. When considering over 11 thousand haunted places, we will determine which states are the most scary, and which kind of places are scarier most often. Apart from the purpose of the guide for paranormal tourists, this research can also provides the understanding about cultural and historical values.
+Have you ever looked at certain states in America and thought to yourself, Why do these states have more ghost legends? This blog post looks at the haunted places across the United States and uses data to provide answers to those interested in paranormal activities. When considering over 11 thousand haunted places, we will determine which states are the most scary and which kinds of places are scarier most often. Apart from the purpose of the guide for paranormal tourists, this research can also provide understanding about cultural and historical values.
 
-## Problem Discription
+## Problem Description
 
-Some of them are historical sites, battlefields, cemeteries or formerly conceived homes of notorious murderers that are all believed to be haunted. However, the question remains: Which states are actually more paranormal than others? What types of locations are said to be most frequently haunted? We posed two research questions: ‘What is the between historical event and haunting?’, and ‘What historical events are associated with haunted locations?’ Using a sample of almost 11,000 self-reported haunted locations from across the United States, we sought to answer these questions and explore the relationship between historical events and hauntings.
+Some of them are historical sites, battlefields, cemeteries, or formerly conceived homes of notorious murderers that are all believed to be haunted. However, the question remains: Which states are actually more paranormal than others? What types of locations are said to be most frequently haunted? We posed two research questions: ‘What is the difference between historical events and haunting?’ and ‘What historical events are associated with haunted locations?’ Using a sample of almost 11,000 self-reported haunted locations from across the United States, we sought to answer these questions and explore the relationship between historical events and hauntings.
 
 ## Data Description
 
-The data set was sourced from [TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-10-10/readme.md), has about 11,000 rows. Each row has details like where the spooky place is (city, state, and map points), a brief of the site, and type (e.g., inn, graveyard). The main bits for this study are:
+**Data Source**
+The data set was sourced from [TidyTuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-10-10/readme.md)which provides open-source datasets for data visualization and analysis.This particular dataset contains nearly 11,000 records of haunted locations across the U.S., each describing a specific place reportedly associated with paranormal activity. Each row has details like where the spooky place is (city, state, and map points), a brief of the site, and type (e.g., inn, graveyard). 
+
+**Dataset Description**
+The main bits for this study are:
 
 - City: The town where it is found.
 - State: The U.S. state of the spooky spot.
 - Description: A short text box telling what the site is like.
 - Coordinates: Long and lat points to put the places on a map.
+- Type of Place: This includes categories such as cemeteries, houses, hotels, and even modern-day locations like Walmarts,  and so on
 
-The dataset provided by TidyTuesday was already cleaned to a large extent, minimizing the need for extensive data wrangling.
+**Data cleaning**
+The dataset provided by TidyTuesday was pre-cleaned, the majority of potential issues, such as missing values, formatting errors, and outlier entries, had already been resolved by the data curators. minimizing the need for extensive data wrangling.
 
 ## Analysis
 
-```{r}
+```{r waring = FALSE, message = FALSE}
 #| echo: FALSE
 #| label: tbl-one
-#| tbl-cap: Top seven haunted locations
+#| tbl-cap: "Top seven haunted locations"
 
 # Top 7 haunted location in the US
 location_counts <- haunted_places %>%
@@ -54,19 +60,19 @@ location_counts <- haunted_places %>%
   summarise(count = n(), .groups = "drop") %>%
   arrange(desc(count)) %>%
   head(7)
-# craeting table
+# creating table
 location_counts |>
-  kable() |>
+  kable(caption = "Top 7 Haunted Locations by State.") |>
   kable_styling(bootstrap_options = c("striped", "hover", "condensed"))
 
 ```
-@tbl-one
 
+The following @tbl-one displays the number of haunted places exhibited according to specific individual regions in the various states. Leading in the list is Prince Georges County in Maryland, which has 18 haunted areas; Mission Inn in California, as well as Oviedo in Florida, which has 12. Some of the colleges and universities that are listed in the haunted places include Fordham University in New York, the University of Vermont, and many others. The fact that educational institutions are present in the dataset gives an important cultural angle assumed by people: that hauntings are more likely at places with historic or high emotional value.
 
-```{r}
+```{r waring = FALSE, message = FALSE}
 #| echo: FALSE
 #| label: fig-one
-#| fig-cap: Top seven haunted locations graph
+#| fig-cap: "Bar plot: Top seven haunted locations in the US"
 
 ggplot(location_counts, aes(x = state, y = count, fill = location)) +
   geom_bar(stat = "identity", position = "dodge") +
@@ -79,11 +85,13 @@ ggplot(location_counts, aes(x = state, y = count, fill = location)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
+The @fig-one also shows that Maryland, and particularly Prince George's County, is a strong contender for the number of haunted sites, with California and Florida following behind. Besides the locations like Mission Inn and Oviedo, which are preserved for their spooky past, it is rather interesting to list well-known universities like Fordham University and the University of Vermont among them. This information shows that although education institutions such as schools and military academies like the Wentworth Military Academy are part of the data set, there are hauntings that do not occur in traditional eerie places like cemeteries or hotels. What the data does suggest is that haunted experiences can occur in a variety of settings and may occur because of some imagined association or past connected with a place.
 
-```{r}
+
+```{r waring = FALSE, message = FALSE}
 #| echo: FALSE
 #| label: fig-two
-#| fig-cap: Top seven haunted states in the US
+#| fig-cap: "Interactive line plot: Top seven haunted states in the US"
  
 # Filter the top 7 states by the number of haunted places
 state_data_top7 <- haunted_places %>%
@@ -91,9 +99,9 @@ state_data_top7 <- haunted_places %>%
   summarise(Count = n()) %>%
   slice_max(Count, n = 7) 
 
-# Create the ggplot 
+# Create the ggplot for top 7 states
 p <- ggplot(state_data_top7, aes(x = reorder(state, -Count), y = Count, group = 1)) +
-  geom_line(color = "darkblue", size = 1) + 
+  geom_line(color = "darkblue", linewidth = 1) + 
   geom_point(size = 4, color = "darkblue", fill = "lightblue", shape = 21) +  
   coord_flip() +  
   labs(title = "Top 7 States by Number of Haunted Places",
@@ -102,8 +110,33 @@ p <- ggplot(state_data_top7, aes(x = reorder(state, -Count), y = Count, group = 
   theme_minimal() +
   theme(axis.text.y = element_text(size = 8))
 
-# Convert the ggplot object to a Plotly plot
+# Convert the ggplot object to an interactive Plotly plot
 ggplotly(p)
-
 ```
+
+
+The states that claim more of their areas as haunted, especially the ones depicted to have diverse histories, calibrate higher points, as forwarded by @fig-two. The state with the most haunted places in Illinois, with over 1000 haunts; there are haunted places in urban areas and historical places. New York, Ohio, and Pennsylvania come next, and this could be linked with historical importance in American history, civil wars, and early industrialisation, respectively. It would be that there are fewer haunted places going through the states as we come to states such as Texas and California, perhaps owing to the fact that such states may have been developed at a later time or do not have similar types of histories as states such as the ones herein above that resulted in the formation of the different types of haunts. 
+
+Kinds of Places and Historicism 
+More than a notable combination of hauntings common to ghost hunting television shows, the data also presents the different kinds of haunted places. War graves, battlefields, and related historical sites might be presumed to be the most common places, while legal centres, public spaces, and schools are ghostly places as well. This variety can imply that haunting or other ghostly reports are not only linked to a place’s age or its historical character but also to the value of specific landscapes for communities. 
+
+## Conclusion
+
+Information presented in this research of haunted sites in the USA gives an understanding of how history and culture affect the beliefs on the paranormal. Some of the regions that were most engaged include regions such as Illinois and New York due to the increased number of reported haunted places, which are a result of their history tracing back to the wars, industrial revolution, and colonialism. The extent that a number of these are found in these states implies that states that have had many events in their histories, be they happy or sad, have a higher probability of having incidents reported as paranormal.
+
+Further, the kinds of places that become haunted—from historical monuments to colleges or today’s public amenities, indicate that haunting is not exclusive to typically spooky territory, areas such as graveyards, and sites of warfare. Rather than what can be logically assumed, typical SCs encompass a broad spectrum of settings, most probably because the areas are psychologically meaningful to the local communities. 
+
+The results help to paint a much more complex picture concerning how cultural memory and historical events would result in haunting. Those founded earlier and with an often stormy history - the Peninsula or Illinois, for instance, seem to be the most filled with ghosts, whereas Texas and California, though having many, register fewer haunted locations. This trend shows us how historical references best explain the instances of paranormal existence. 
+
+The future research about these sites could focus on more about particular events or tragedies that have resulted in the haunting of such places, so that there would be an association between the two periods. This data could also be very useful for establishing the weird tour attractions, where consumers would be able to visit the historic and emotional supernatural sites. 
+
+The evaluation is not only useful to satiate fans of paranormal activity but also addresses the historical and cultural perception of the haunted spaces. They show that cultural stories persist and can link places to the past in both conventional and enigmatic manners.
+
+## Reference
+
+‘Tidytuesday/Data/2023/2023-10-10/Readme.Md at Master · Rfordatascience/Tidytuesday’. GitHub, <https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-10-10/readme.md>. Accessed 3 Oct. 2024.
+
+‘List of Reportedly Haunted Locations in the United States’. Wikipedia, 3 Oct. 2024. Wikipedia, <https://en.wikipedia.org/w/index.php?title=List_of_reportedly_haunted_locations_in_the_United_States&oldid=1244089694>.
+
+
 

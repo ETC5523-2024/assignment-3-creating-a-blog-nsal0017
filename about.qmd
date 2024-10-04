@@ -1,5 +1,5 @@
 ---
-title: "Namandeep kaur Sauja"
+title: "Namandeep Kaur Saluja"
 image: profile.jpg
 about:
   template: jolla
@@ -11,12 +11,51 @@ about:
       text: linkedin
       href: https://www.linkedin.com/in/namandeep-kaur-28b150321/
 
+
 ---
+
 
 I am a dedicated student at Monash University, currently pursuing a Master of Business Analytics, , building on a strong academic foundation with a Bachelor's in Commerce from DAVV, India. Along with my academic journey, I have experience working as a teacher, where I organized and managed a number of school events, which helped me develop strong leadership and project management skills. 
 
 I am proficient in tools like Python, SQL, and GitHub, enabling me to transform raw data into actionable insights. I am passionate about applying these skills in the business world and aim to work in data consulting or business intelligence. 
 
+::: columns
+::: {.column width="40%"}
+
+## Interest
+
+- Data analytics
+- Data-Driven Decision Making
+- Business Intelligence Tools and Technologies
+- Event Management and Leadership
+
+:::
+
+::: {.column width="60%"}
+## Education
+
+**Monash University, Australia**
+
+Masters in Business Analytics, Present.
 
 
+**DAVV, India**
 
+Bachelor of Commerce(Accounts,Tax and Management)
+
+9.2 sgpa.
+
+
+:::
+
+::: {.column width="60%"}  
+
+## Contact
+
+
+**Email**: [nsal0017@student.monash.edu](mailto:nsal0017@student.monash.edu)
+
+**Linkedin**: [Namandeep kaur](https://www.linkedin.com/in/namandeep-kaur-28b150321/)
+
+:::
+:::
