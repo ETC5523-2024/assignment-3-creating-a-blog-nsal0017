@@ -24,10 +24,10 @@ I am proficient in tools like Python, SQL, and GitHub, enabling me to transform 
 
 ## Interest
 
-- Data analytics
-- Data-Driven Decision Making
-- Business Intelligence Tools and Technologies
-- Event Management and Leadership
+  Data analytics
+  Data-Driven Decision Making
+  Business Intelligence Tools and Technologies
+  Event Management and Leadership
 
 :::
 
